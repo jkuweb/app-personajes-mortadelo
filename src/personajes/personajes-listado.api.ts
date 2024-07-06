@@ -14,7 +14,7 @@ export const obtenerPersonajes = async (): Promise<Personaje[]> => {
 
 export const obtenerImagenDelPersonaje = async (nombreDelPersonaje: string): Promise<string> => {
   try {
-    const imagenDelPersonaje = await axios(`${API_URL}/${nombreDelPersonaje}.web`)
+    const imagenDelPersonaje = await axios(`${API_URL}/${nombreDelPersonaje}`)
     return imagenDelPersonaje.data
   } catch (error) {
     throw new Error("No se ha podido obtener las imágenes de los personajes")
