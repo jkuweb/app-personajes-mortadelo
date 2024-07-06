@@ -1,11 +1,22 @@
 import axios from "axios";
 import { Personaje } from "./personajes-listado.model";
 
+export const API_URL = "http:localhost:3000";
+
 export const obtenerPersonajes = async (): Promise<Personaje[]> => {
   try {
-    const personajes = await axios.get("https://localhost/3000/personajes")
+    const personajes = await axios.get(`${API_URL}/personajes`)
     return personajes.data
   } catch (error) {
     throw new Error("No se ha podido obtener los personajes")
+  }
+}
+
+export const obtenerImagenDelPersonaje = async (nombreDelPersonaje: string): Promise<string> => {
+  try {
+    const imagenDelPersonaje = await axios(`${API_URL}/${nombreDelPersonaje}.web`)
+    return imagenDelPersonaje.data
+  } catch (error) {
+    throw new Error("No se ha podido obtener las imágenes de los personajes")
   }
 }
