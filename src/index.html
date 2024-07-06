@@ -9,10 +9,16 @@
     <title>Mortadelo y Filemon</title>
   </head>
   <body>
-    <headeri class="cabecera">
+    <header class="cabecera">
       <h1 class="cabecera__h1">Personajes de Mortadelo y Filemón</h1>
-    </headeri>
+    </header>
     <main>
+      <section id="busqueda">
+        <form id="formulario">
+          <input type="text" id="caja-busqueda" />
+          <button type="submit">Buscar</button>
+        </form>
+      </section>
       <section id="listado-personajes" class="listado-personajes"></section>
     </main>
     <script type="module" src="./personajes/personajes-listado.ts"></script>
