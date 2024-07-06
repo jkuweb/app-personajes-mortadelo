@@ -5,8 +5,8 @@ import { Personaje } from "./personajes-listado.model";
 
 const crearElementoParrafo = (texto: string): HTMLParagraphElement => {
   const parrafo = document.createElement("p");
-  parrafo.classList.add("info-text");
   parrafo.textContent = texto;
+  parrafo.classList.add("info-text");
 
   return parrafo;
 }
@@ -23,22 +23,40 @@ const crearElementoImagen = (fileName: string, altText: string) => {
 const crearElementoLista = (lista: string[]) => {
   const listaContenedor = document.createElement("ul")
   lista.forEach((texto) => {
-    const listItem = document.createElement("li")
-    listItem.textContent = texto
-    listaContenedor.appendChild(listItem)
+    const listItem = document.createElement("li");
+    listItem.textContent = texto;
+    listaContenedor.appendChild(listItem);
   })
   return listaContenedor
 }
 
+const crearElementoSpan = (categoria: string): HTMLSpanElement => {
+  const elementoSpan = document.createElement("span")
+  elementoSpan.textContent = categoria;
+  elementoSpan.classList.add("categoria")
+
+  return elementoSpan
+}
+
 const crearContenedorPersonajes = (personaje: Personaje): HTMLDivElement => {
   const contenedorPersonajes = document.createElement("div");
-  const nombre = crearElementoParrafo(personaje.nombre);
-  contenedorPersonajes.appendChild(nombre);
-  const especialidad = crearElementoParrafo(personaje.especialidad);
-  contenedorPersonajes.appendChild(especialidad);
+
   const imagen = crearElementoImagen(personaje.imagen, personaje.nombre)
   contenedorPersonajes.appendChild(imagen);
+
+  const nombre = crearElementoParrafo(personaje.nombre);
+  const nombreCategoria = crearElementoSpan("nombre");
+  nombre.insertBefore(nombreCategoria, nombre.firstChild)
+  contenedorPersonajes.appendChild(nombre);
+
+  const nombreEspecialidad = crearElementoSpan("especialidad");
+  const especialidad = crearElementoParrafo(personaje.especialidad);
+  especialidad.insertBefore(nombreEspecialidad, especialidad.firstChild)
+  contenedorPersonajes.appendChild(especialidad);
+
+  const nombreHabilidad = crearElementoSpan("habilidades");
   const habilidades = crearElementoLista(personaje.habilidades);
+  habilidades.insertBefore(nombreHabilidad, habilidades.firstChild)
   contenedorPersonajes.appendChild(habilidades)
 
   return contenedorPersonajes
