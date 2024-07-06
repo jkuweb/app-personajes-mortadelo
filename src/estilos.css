@@ -1,0 +1,75 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #222;
+  background-color: #e5eaee;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main {
+  padding: 1rem;
+}
+.cabecera__h1 {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .cabecera__h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.listado-personajes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 450px));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.listado-personajes > article {
+  padding: 2.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 15px;
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: 400px auto;
+  row-gap: 0.5rem;
+}
+
+.listado-personajes > article > ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.imagen {
+  width: 270px;
+  height: 350px;
+  object-fit: contain;
+  align-self: center;
+  justify-self: center;
+}
+
+.categoria {
+  font-weight: 900;
+}
+.categoria::after {
+  content: ":";
+  margin-right: 0.3rem;
+  margin-left: 0.1rem;
+}
+
+li:not(:last-child)::after {
+  content: ",";
+  margin-right: 0.2rem;
+}

@@ -38,23 +38,23 @@ const crearElementoSpan = (categoria: string): HTMLSpanElement => {
   return elementoSpan
 }
 
-const crearContenedorPersonajes = (personaje: Personaje): HTMLDivElement => {
-  const contenedorPersonajes = document.createElement("div");
+const crearContenedorPersonajes = (personaje: Personaje): HTMLElement => {
+  const contenedorPersonajes = document.createElement("article");
 
   const imagen = crearElementoImagen(personaje.imagen, personaje.nombre)
   contenedorPersonajes.appendChild(imagen);
 
   const nombre = crearElementoParrafo(personaje.nombre);
-  const nombreCategoria = crearElementoSpan("nombre");
+  const nombreCategoria = crearElementoSpan("Nombre");
   nombre.insertBefore(nombreCategoria, nombre.firstChild)
   contenedorPersonajes.appendChild(nombre);
 
-  const nombreEspecialidad = crearElementoSpan("especialidad");
+  const nombreEspecialidad = crearElementoSpan("Especialidad");
   const especialidad = crearElementoParrafo(personaje.especialidad);
   especialidad.insertBefore(nombreEspecialidad, especialidad.firstChild)
   contenedorPersonajes.appendChild(especialidad);
 
-  const nombreHabilidad = crearElementoSpan("habilidades");
+  const nombreHabilidad = crearElementoSpan("Habilidades");
   const habilidades = crearElementoLista(personaje.habilidades);
   habilidades.insertBefore(nombreHabilidad, habilidades.firstChild)
   contenedorPersonajes.appendChild(habilidades)
