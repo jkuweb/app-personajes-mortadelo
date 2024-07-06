@@ -21,10 +21,11 @@ export const obtenerImagenDelPersonaje = async (nombreDelPersonaje: string): Pro
   }
 }
 
-export const obtenerPersonaFiltrada = async (nombrePersonaje: string): Promise<Personaje> => {
+export const obtenerPersonajesFiltrado = async (nombrePersonaje: string): Promise<Personaje[]> => {
   try {
-    const personaje = await axios.get(`http://localhost:3000/personajes?nombre_like=${nombrePersonaje}`);
-    return personaje.data;
+    const personajes = await axios.get(`http://localhost:3000/personajes?nombre_like=${nombrePersonaje}`);
+    console.log(personajes.data)
+    return personajes.data;
   } catch (error) {
     throw new Error("No e ha podido obtener el personaje filtrado");
   }
