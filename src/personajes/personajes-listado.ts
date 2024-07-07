@@ -1,8 +1,5 @@
 import {
   API_URL,
-  obtenerImagenDelPersonaje,
-  obtenerPersonaFiltrada,
-  obtenerPersonajeFiltrado,
   obtenerPersonajes,
   obtenerPersonajesFiltrado,
 } from "./personajes-listado.api";
@@ -70,9 +67,9 @@ const crearContenedorPersonaje = (personaje: Personaje): HTMLElement => {
 const mostrarListadoDePersonajes = async () => {
   const contenedorListado = document.getElementById("listado-personajes");
   const nombreDelPersonaje = obtenerNombreDelPersonaje();
-  const personajes = (Boolean(nombreDelPersonaje))
+  const personajes = Boolean(nombreDelPersonaje)
     ? await obtenerPersonajesFiltrado(nombreDelPersonaje)
-    : await obtenerPersonajes()
+    : await obtenerPersonajes();
 
   vaciarListadoPersonajes();
   vaciarCajaBusqueda();
@@ -80,7 +77,7 @@ const mostrarListadoDePersonajes = async () => {
   personajes.forEach((personaje) => {
     const contenedorPersonajes = crearContenedorPersonaje(personaje);
     if (contenedorListado !== null) {
-      contenedorListado.appendChild(contenedorPersonajes)
+      contenedorListado.appendChild(contenedorPersonajes);
     }
   });
 };
@@ -104,7 +101,6 @@ const vaciarCajaBusqueda = () => {
   }
 };
 
-
 const obtenerNombreDelPersonaje = (): string => {
   const elementoInputBusqueda = document.getElementById("busqueda");
   let nombrePersonaje;
@@ -123,7 +119,7 @@ const inicializarFormulario = () => {
     formulario.addEventListener("submit", (evento) => {
       evento.preventDefault();
       // mostrarListadoDePersonajesFiltrados();
-      mostrarListadoDePersonajes()
+      mostrarListadoDePersonajes();
     });
   }
 };

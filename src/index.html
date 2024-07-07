@@ -14,9 +14,14 @@
     </header>
     <main>
       <section class="buscador">
-        <form id="formulario">
-          <input type="text" id="busqueda" />
-          <button type="submit">Buscar</button>
+        <form class="formulario buscador__form" id="formulario">
+          <input
+            type="text"
+            id="busqueda"
+            class="formulario__caja-busqueda"
+            placeholder="nombre del personaje"
+          />
+          <button type="submit">Filtrar</button>
         </form>
       </section>
       <section id="listado-personajes" class="listado-personajes"></section>

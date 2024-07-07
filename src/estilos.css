@@ -19,7 +19,7 @@
 .cabecera__h1 {
   padding: 2rem;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 @media only screen and (min-width: 750px) {
@@ -33,6 +33,11 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 450px));
   gap: 2rem;
   justify-content: center;
+}
+@media only screen and (min-width: 750px) {
+  .listado-personajes {
+    padding: 0 1rem;
+  }
 }
 
 .listado-personajes > article {
@@ -72,4 +77,62 @@
 li:not(:last-child)::after {
   content: ",";
   margin-right: 0.2rem;
+}
+
+.buscador {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .buscador {
+    padding: 3rem;
+  }
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: 25rem;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 0.7rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .formulario {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    grid-template-rows: 3.5rem;
+    column-gap: 0.5rem;
+  }
+}
+
+.formulario__caja-busqueda {
+  all: unset;
+  background-color: #fff;
+  border: 1px solid #9ede98;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: #0a4b04;
+}
+
+.formulario > button {
+  all: unset;
+  width: 7rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background-color: #9ede98;
+  transition: background 0.3s ease;
+  justify-self: center;
+}
+
+.formulario > button:hover {
+  cursor: pointer;
+  background-color: #82cb7c;
+}
+.formulario > button,
+.formulario__caja-busqueda {
+  border-radius: 5px;
 }
