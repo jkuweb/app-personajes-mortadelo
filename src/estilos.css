@@ -33,6 +33,7 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 450px));
   gap: 2rem;
   justify-content: center;
+  margin-bottom: 5rem;
 }
 @media only screen and (min-width: 750px) {
   .listado-personajes {
