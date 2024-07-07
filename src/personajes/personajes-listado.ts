@@ -69,7 +69,14 @@ const crearContenedorPersonaje = (personaje: Personaje): HTMLElement => {
 
 const mostrarListadoDePersonajes = async () => {
   const contenedorListado = document.getElementById("listado-personajes");
-  const personajes = await obtenerPersonajes();
+  const nombreDelPersonaje = obtenerNombreDelPersonaje();
+  const personajes = (Boolean(nombreDelPersonaje))
+    ? await obtenerPersonajesFiltrado(nombreDelPersonaje)
+    : await obtenerPersonajes()
+
+  vaciarListadoPersonajes();
+  vaciarCajaBusqueda();
+
   personajes.forEach((personaje) => {
     const contenedorPersonajes = crearContenedorPersonaje(personaje);
     if (contenedorListado !== null) {
@@ -97,23 +104,6 @@ const vaciarCajaBusqueda = () => {
   }
 };
 
-const mostrarListadoDePersonajesFiltrados = async () => {
-  const contenedorListado = document.getElementById("listado-personajes");
-  const nombreDelPersonaje = obtenerNombreDelPersonaje();
-  const personajes = (Boolean(nombreDelPersonaje))
-    ? await obtenerPersonajesFiltrado(nombreDelPersonaje)
-    : await obtenerPersonajes()
-
-  vaciarListadoPersonajes();
-  vaciarCajaBusqueda();
-
-  personajes.forEach((personaje) => {
-    const contenedorPersonajes = crearContenedorPersonaje(personaje);
-    if (contenedorListado !== null) {
-      contenedorListado.appendChild(contenedorPersonajes);
-    }
-  })
-};
 
 const obtenerNombreDelPersonaje = (): string => {
   const elementoInputBusqueda = document.getElementById("busqueda");
@@ -132,7 +122,8 @@ const inicializarFormulario = () => {
   if (formulario && formulario instanceof HTMLElement) {
     formulario.addEventListener("submit", (evento) => {
       evento.preventDefault();
-      mostrarListadoDePersonajesFiltrados();
+      // mostrarListadoDePersonajesFiltrados();
+      mostrarListadoDePersonajes()
     });
   }
 };
